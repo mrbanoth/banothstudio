@@ -318,6 +318,8 @@ section, header.hero { scroll-margin-top: 70px; }
 .tools li:hover .tool-tile { transform: translateY(-3px) rotate(-4deg); }
 .tool-name { font-size: 10px; color: var(--muted); text-align: center; line-height: 1.2; }
 .tools--ai .tool-tile { border-radius: 50%; }
+.tool-tile--logo { background: var(--white); padding: 8px; }
+.tool-tile--logo img { width: 100%; height: 100%; object-fit: contain; }
 
 /* ───────── SERVICES ───────── */
 .services { padding-block: 34px 80px; }

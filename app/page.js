@@ -1,3 +1,5 @@
+import fs from 'fs';
+import path from 'path';
 import Mockup from '../components/Mockup';
 import { LogoMark } from '../components/Logo';
 import { EMAIL, PHONE_DISPLAY, WHATSAPP_URL, QUOTE_URL, YEAR } from '../components/site';
@@ -15,24 +17,42 @@ const journey = [
 ];
 
 const tools = [
-  { k: 'Ps', name: 'Photoshop', bg: '#001e36', fg: '#31a8ff' },
-  { k: 'Ai', name: 'Illustrator', bg: '#330000', fg: '#ff9a00' },
-  { k: 'Pr', name: 'Premiere Pro', bg: '#00005b', fg: '#9999ff' },
-  { k: 'Ae', name: 'After Effects', bg: '#00005b', fg: '#9999ff' },
-  { k: 'Fg', name: 'Figma', bg: '#1e1e1e', fg: '#ffffff' },
-  { k: 'Cv', name: 'Canva', bg: 'linear-gradient(135deg,#00c4cc,#7d2ae8)', fg: '#ffffff' },
-  { k: 'Cc', name: 'CapCut', bg: '#ffffff', fg: '#111111' },
+  { k: 'Ps', name: 'Photoshop', slug: 'photoshop', bg: '#001e36', fg: '#31a8ff' },
+  { k: 'Ai', name: 'Illustrator', slug: 'illustrator', bg: '#330000', fg: '#ff9a00' },
+  { k: 'Pr', name: 'Premiere Pro', slug: 'premiere-pro', bg: '#00005b', fg: '#9999ff' },
+  { k: 'Ae', name: 'After Effects', slug: 'after-effects', bg: '#00005b', fg: '#9999ff' },
+  { k: 'Fg', name: 'Figma', slug: 'figma', bg: '#1e1e1e', fg: '#ffffff' },
+  { k: 'Cv', name: 'Canva', slug: 'canva', bg: 'linear-gradient(135deg,#00c4cc,#7d2ae8)', fg: '#ffffff' },
+  { k: 'Cc', name: 'CapCut', slug: 'capcut', bg: '#ffffff', fg: '#111111' },
 ];
 
+// Real logos: drop official files into public/tools/ named <slug>.svg (or .png / .webp).
+// Any tool with a file shows its logo; the rest fall back to the letter tile.
+function logoFor(slug) {
+  for (const ext of ['svg', 'png', 'webp']) {
+    if (fs.existsSync(path.join(process.cwd(), 'public', 'tools', `${slug}.${ext}`))) return `/tools/${slug}.${ext}`;
+  }
+  return null;
+}
+
+function ToolTile({ t }) {
+  const logo = logoFor(t.slug);
+  return logo ? (
+    <span className="tool-tile tool-tile--logo" aria-hidden="true"><img src={logo} alt="" /></span>
+  ) : (
+    <span className="tool-tile" style={{ background: t.bg, color: t.fg }} aria-hidden="true">{t.k}</span>
+  );
+}
+
 const aiTools = [
-  { k: 'Cl', name: 'Claude', bg: '#d97757', fg: '#ffffff' },
-  { k: 'Gp', name: 'ChatGPT', bg: '#0f0f0f', fg: '#ffffff' },
-  { k: 'Cx', name: 'Codex', bg: '#ffffff', fg: '#111111' },
-  { k: 'Cu', name: 'Cursor', bg: '#1b1b1b', fg: '#e8e8e8' },
-  { k: 'Oc', name: 'OpenCode', bg: '#2b2b2b', fg: '#f7c21b' },
-  { k: 'Gm', name: 'Gemini', bg: 'linear-gradient(135deg,#4f8bff,#9b72f2)', fg: '#ffffff' },
-  { k: 'Mj', name: 'Midjourney', bg: '#f3f3f3', fg: '#111111' },
-  { k: 'Ff', name: 'Firefly', bg: '#2d0d0d', fg: '#ff6b5a' },
+  { k: 'Cl', name: 'Claude', slug: 'claude', bg: '#d97757', fg: '#ffffff' },
+  { k: 'Gp', name: 'ChatGPT', slug: 'chatgpt', bg: '#0f0f0f', fg: '#ffffff' },
+  { k: 'Cx', name: 'Codex', slug: 'codex', bg: '#ffffff', fg: '#111111' },
+  { k: 'Cu', name: 'Cursor', slug: 'cursor', bg: '#1b1b1b', fg: '#e8e8e8' },
+  { k: 'Oc', name: 'OpenCode', slug: 'opencode', bg: '#2b2b2b', fg: '#f7c21b' },
+  { k: 'Gm', name: 'Gemini', slug: 'gemini', bg: 'linear-gradient(135deg,#4f8bff,#9b72f2)', fg: '#ffffff' },
+  { k: 'Mj', name: 'Midjourney', slug: 'midjourney', bg: '#f3f3f3', fg: '#111111' },
+  { k: 'Ff', name: 'Firefly', slug: 'firefly', bg: '#2d0d0d', fg: '#ff6b5a' },
 ];
 
 const Icon = {
@@ -219,7 +239,7 @@ export default function Home() {
             <ul className="tools">
               {tools.map((t) => (
                 <li key={t.k}>
-                  <span className="tool-tile" style={{ background: t.bg, color: t.fg }} aria-hidden="true">{t.k}</span>
+                  <ToolTile t={t} />
                   <span className="tool-name">{t.name}</span>
                 </li>
               ))}
@@ -228,7 +248,7 @@ export default function Home() {
             <ul className="tools tools--ai">
               {aiTools.map((t) => (
                 <li key={t.k}>
-                  <span className="tool-tile" style={{ background: t.bg, color: t.fg }} aria-hidden="true">{t.k}</span>
+                  <ToolTile t={t} />
                   <span className="tool-name">{t.name}</span>
                 </li>
               ))}

@@ -127,6 +127,7 @@ export const PHONE = '9390730129';
   | `--paper` | `#efede8` |
 
 - **Real work in place of mockups.** Put images in `public/work/` and swap `<Mockup m={w.m} />` for an `<img>` in `app/page.js`.
+- **Tool logos.** Drop official logo files into `public/tools/` (e.g. `photoshop.svg`, `claude.svg`). They replace the letter tiles automatically. File names are listed in `public/tools/README.md`.
 - **Photos.** Replace `public/photo-bw.webp` (hero) and `public/photo-color.webp` (about). Transparent cut-outs look best.
 
 <br />
