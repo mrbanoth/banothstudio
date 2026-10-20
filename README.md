@@ -46,6 +46,7 @@ YouTube thumbnails · Social media · Brand identity · Posters · Ads
 | 🎬 **Intro loader** | Logo stamp, rising wordmark, progress bar. Plays once and lifts away with a torn-paper edge. Pure CSS. |
 | 📌 **Sticky navbar** | Stays on top, compacts on scroll, highlights the section on screen. |
 | 📱 **Mobile menu** | Full-screen menu that opens in a circle from the button, with staggered links. Closes on link tap or <kbd>Esc</kbd>. |
+| 🧰 **Tools I Use** | Design & video tools (Photoshop, Illustrator, Premiere Pro, After Effects, Figma, Canva, CapCut) and AI tools (Claude, ChatGPT, Codex, Cursor, OpenCode, Gemini, Midjourney, Firefly). |
 | 🗂️ **Portfolio filter** | All / Thumbnails / Social Media / Posters / Branding / Ads. Works without JavaScript. |
 | 💬 **Direct contact** | *Get a Quote* opens a pre-filled email. *Chat on WhatsApp* opens a chat with a ready message. |
 | ✂️ **Torn-paper style** | Ripped edges, marker notes, doodles and tape. All drawn in SVG/CSS, no image files. |
@@ -91,7 +92,7 @@ Open **http://localhost:3000**.
 banothstudio/
 ├── app/
 │   ├── layout.js        # fonts, metadata, viewport
-│   ├── page.js          # all sections + content arrays
+│   ├── page.js          # all sections + content arrays (services, tools, aiTools, work)
 │   └── globals.css      # design tokens, layout, responsive rules
 ├── components/
 │   ├── Nav.js           # sticky navbar + mobile menu (client)

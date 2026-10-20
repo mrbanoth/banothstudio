@@ -307,11 +307,17 @@ section, header.hero { scroll-margin-top: 70px; }
 .timeline li::before { content: ""; position: absolute; left: -28px; top: 6px; width: 9px; height: 9px; border-radius: 50%; background: var(--ink); }
 .t-years, .t-role { font-weight: 600; }
 .t-at { color: var(--muted); }
-.tools { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 14px; }
-.tools li {
-  width: 46px; height: 46px; border-radius: 9px; display: grid; place-items: center;
-  font-weight: 600; font-size: 19px; box-shadow: 0 1px 0 #0001, 0 0 0 1px #0000000f;
+.tools-label { font-size: 10.5px; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); margin-top: 14px; }
+.tools { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px 8px; margin-top: 8px; }
+.tools li { display: grid; justify-items: center; gap: 5px; min-width: 0; }
+.tool-tile {
+  width: 46px; height: 46px; border-radius: 10px; display: grid; place-items: center;
+  font-weight: 600; font-size: 18px; box-shadow: 0 0 0 1px #0000000f, 0 2px 0 #00000014;
+  transition: transform .2s ease;
 }
+.tools li:hover .tool-tile { transform: translateY(-3px) rotate(-4deg); }
+.tool-name { font-size: 10px; color: var(--muted); text-align: center; line-height: 1.2; }
+.tools--ai .tool-tile { border-radius: 50%; }
 
 /* ───────── SERVICES ───────── */
 .services { padding-block: 34px 80px; }
@@ -514,8 +520,6 @@ section, header.hero { scroll-margin-top: 70px; }
   .stats dt { font-size: 28px; }
   .idea { font-size: 12px; top: -4px; }
   .timeline li { font-size: 13px; }
-  .tools { gap: 10px; }
-  .tools li { width: 44px; height: 44px; font-size: 17px; }
 
   .section-title { margin-left: 0; font-size: 44px; }
   .services { padding-block: 26px 70px; }

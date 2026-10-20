@@ -20,7 +20,19 @@ const tools = [
   { k: 'Pr', name: 'Premiere Pro', bg: '#00005b', fg: '#9999ff' },
   { k: 'Ae', name: 'After Effects', bg: '#00005b', fg: '#9999ff' },
   { k: 'Fg', name: 'Figma', bg: '#1e1e1e', fg: '#ffffff' },
+  { k: 'Cv', name: 'Canva', bg: 'linear-gradient(135deg,#00c4cc,#7d2ae8)', fg: '#ffffff' },
   { k: 'Cc', name: 'CapCut', bg: '#ffffff', fg: '#111111' },
+];
+
+const aiTools = [
+  { k: 'Cl', name: 'Claude', bg: '#d97757', fg: '#ffffff' },
+  { k: 'Gp', name: 'ChatGPT', bg: '#0f0f0f', fg: '#ffffff' },
+  { k: 'Cx', name: 'Codex', bg: '#ffffff', fg: '#111111' },
+  { k: 'Cu', name: 'Cursor', bg: '#1b1b1b', fg: '#e8e8e8' },
+  { k: 'Oc', name: 'OpenCode', bg: '#2b2b2b', fg: '#f7c21b' },
+  { k: 'Gm', name: 'Gemini', bg: 'linear-gradient(135deg,#4f8bff,#9b72f2)', fg: '#ffffff' },
+  { k: 'Mj', name: 'Midjourney', bg: '#f3f3f3', fg: '#111111' },
+  { k: 'Ff', name: 'Firefly', bg: '#2d0d0d', fg: '#ff6b5a' },
 ];
 
 const Icon = {
@@ -203,10 +215,21 @@ export default function Home() {
               ))}
             </ol>
             <h3 className="sub">Tools I Use</h3>
+            <p className="tools-label">Design &amp; Video</p>
             <ul className="tools">
               {tools.map((t) => (
-                <li key={t.k} title={t.name} style={{ background: t.bg, color: t.fg }}>
-                  {t.k}
+                <li key={t.k}>
+                  <span className="tool-tile" style={{ background: t.bg, color: t.fg }} aria-hidden="true">{t.k}</span>
+                  <span className="tool-name">{t.name}</span>
+                </li>
+              ))}
+            </ul>
+            <p className="tools-label">AI &amp; Gen-AI</p>
+            <ul className="tools tools--ai">
+              {aiTools.map((t) => (
+                <li key={t.k}>
+                  <span className="tool-tile" style={{ background: t.bg, color: t.fg }} aria-hidden="true">{t.k}</span>
+                  <span className="tool-name">{t.name}</span>
                 </li>
               ))}
             </ul>
